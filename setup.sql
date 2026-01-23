@@ -6,16 +6,16 @@ CREATE OR REPLACE WAREHOUSE INVENTORY_WH WITH WAREHOUSE_SIZE = 'X-SMALL' AUTO_SU
 -- 2. CREATE RAW DATA TABLE
 CREATE OR REPLACE TABLE DAILY_STOCK_LOGS (
     LOG_DATE DATE,
-    LOCATION_ID VARCHAR(50),
-    ITEM_NAME VARCHAR(100),
-    OPENING_STOCK INT,
-    RECEIVED_QTY INT,
-    ISSUED_QTY INT,
-    CLOSING_STOCK INT,
-    LEAD_TIME_DAYS INT
+    LOCATION_ID VARCHAR(50),     -- e.g., 'City Hospital'
+    ITEM_NAME VARCHAR(100),      -- e.g., 'Paracetamol'
+    OPENING_STOCK INT,           -- Stock at start of day
+    RECEIVED_QTY INT,            -- New stock arrived
+    ISSUED_QTY INT,              -- Stock used/sold
+    CLOSING_STOCK INT,           -- Stock at end of day
+    LEAD_TIME_DAYS INT           -- Days needed to get new stock
 );
 
--- 3. SEED DUMMY DATA
+-- 3. SEED DUMMY DATA 
 INSERT INTO DAILY_STOCK_LOGS VALUES
 ('2023-10-01', 'General Hospital', 'Paracetamol', 1000, 0, 50, 950, 2),
 ('2023-10-02', 'General Hospital', 'Paracetamol', 950, 0, 60, 890, 2),
